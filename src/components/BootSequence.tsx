@@ -7,6 +7,7 @@ const LINES = [
   '',
   'Initializing kernel...',
   'Loading modules: [servicenow] [python] [powerbi] [creativity]',
+  'Loading user profile... [avatar.png] ✓',
   'Mounting filesystem...',
   'Starting desktop environment...',
   '● System ready.',

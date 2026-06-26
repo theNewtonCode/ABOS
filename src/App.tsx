@@ -39,7 +39,7 @@ export default function App() {
         {!booted && <BootSequence onDone={handleBootDone} />}
       </AnimatePresence>
 
-      <Taskbar />
+      <Taskbar onOpenAbout={() => openWindow('about')} />
 
       {/* Main area wrapper for alert positioning */}
       <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>

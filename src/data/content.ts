@@ -89,7 +89,7 @@ export const contactData = {
 }
 
 export const windowDefs: Record<string, { title: string; w: number; h: number; defaultX: number; defaultY: number }> = {
-  about:    { title: 'about_me.txt',           w: 360, h: 300, defaultX: 100, defaultY: 40 },
+  about:    { title: 'about_me.txt',           w: 500, h: 340, defaultX: 110, defaultY: 35 },
   skills:   { title: 'skills.sys',             w: 330, h: 340, defaultX: 140, defaultY: 60 },
   projects: { title: 'project_dashboard.exe',  w: 400, h: 380, defaultX: 180, defaultY: 50 },
   contact:  { title: 'contact.sh',             w: 320, h: 280, defaultX: 160, defaultY: 80 },

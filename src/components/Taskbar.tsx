@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export default function Taskbar() {
+interface Props {
+  onOpenAbout: () => void
+}
+
+export default function Taskbar({ onOpenAbout }: Props) {
   const [time, setTime] = useState('')
 
   useEffect(() => {
@@ -35,7 +39,28 @@ export default function Taskbar() {
       </span>
       <span style={{ color: '#00ff4633' }}>|</span>
       <span style={{ color: '#00ff4699', fontSize: 11 }}>v2.6.25</span>
-      <span style={{ marginLeft: 'auto', color: '#00ff46', fontSize: 12, letterSpacing: 1 }}>{time}</span>
+
+      {/* Right side */}
+      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
+        <img
+          src="/assets/avatar.png"
+          alt="Open about"
+          onClick={onOpenAbout}
+          aria-label="Open about_me.txt"
+          style={{
+            width: 18,
+            height: 18,
+            borderRadius: 2,
+            border: '1px solid #00ff4666',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+            cursor: 'pointer',
+            display: 'block',
+          }}
+          onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+        />
+        <span style={{ color: '#00ff46', fontSize: 12, letterSpacing: 1 }}>{time}</span>
+      </div>
     </div>
   )
 }

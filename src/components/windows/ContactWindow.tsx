@@ -3,9 +3,34 @@ import { contactData } from '../../data/content'
 export default function ContactWindow() {
   return (
     <div>
-      <div style={{ marginBottom: 12 }}>
-        <div style={{ color: '#00ff46', marginBottom: 4 }}>$ ping uday@firstprinciple.dev</div>
-        <div style={{ color: '#00ff4699', fontSize: 11 }}>... connection established ✓</div>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 12 }}>
+        <div style={{ position: 'relative', flexShrink: 0 }}>
+          <img
+            src="/assets/avatar.png"
+            alt="uday"
+            style={{
+              width: 40,
+              height: 40,
+              objectFit: 'cover',
+              objectPosition: 'center top',
+              border: '1px solid #00ff4666',
+              borderRadius: 3,
+              display: 'block',
+            }}
+            onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+          />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,70,0.04) 2px, rgba(0,255,70,0.04) 4px)',
+            pointerEvents: 'none',
+            borderRadius: 3,
+          }} />
+        </div>
+        <div>
+          <div style={{ color: '#00ff46', marginBottom: 4 }}>$ ping uday@firstprinciple.dev</div>
+          <div style={{ color: '#00ff4699', fontSize: 11 }}>... connection established ✓</div>
+        </div>
       </div>
       {contactData.links.map(l => (
         <div key={l.key} style={{ display: 'flex', gap: 8, marginBottom: 5 }}>
