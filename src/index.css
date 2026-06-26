@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050a05;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* ── CRT Scanlines ── */
+.crt-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 255, 70, 0.03) 3px,
+    rgba(0, 255, 70, 0.03) 4px
+  );
+}
+
+/* ── CRT Flicker ── */
+@keyframes crt-flicker {
+  0%,   95%,  100% { opacity: 0; }
+  96%,  98%         { opacity: 1; }
+  97%,  99%         { opacity: 0; }
+}
+
+.crt-flicker {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: rgba(0, 255, 70, 0.05);
+  opacity: 0;
+  animation: crt-flicker 8s infinite;
+}
+
+/* ── Blinking cursor ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.blink-cursor {
+  animation: blink 1s step-end infinite;
+  color: #00ff46;
+}
+
+/* ── Pulsing dot ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,70,0.6); }
+  50%       { box-shadow: 0 0 0 4px rgba(0,255,70,0); }
+}
+
+.pulse-dot {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Custom scrollbar ── */
+.win-body {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff46 #0a120a;
+}
+
+.win-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.win-body::-webkit-scrollbar-track {
+  background: #0a120a;
+}
+
+.win-body::-webkit-scrollbar-thumb {
+  background: #00ff46;
+  border-radius: 2px;
+}
+
+/* ── Mobile notice ── */
+.mobile-notice {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-notice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: #050a05;
+    color: #00ff46;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    text-align: center;
+    padding: 24px;
+    z-index: 20000;
+  }
+}
