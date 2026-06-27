@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.admin-input {
+  background: #040d04;
+  border: 1px solid #00ff4633;
+  border-radius: 3px;
+  color: #00ff46;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  padding: 8px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.admin-input:focus { border-color: #00ff46; }
+.admin-input::placeholder { color: #00ff4633; }
+
+.admin-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-label {
+  color: #00ff4699;
+  font-size: 11px;
+  font-family: 'Share Tech Mono', monospace;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.admin-section-header {
+  margin-bottom: 24px;
+}
+.admin-section-comment {
+  color: #00ff4444;
+  font-size: 12px;
+  margin-bottom: 4px;
+  font-family: 'Share Tech Mono', monospace;
+}
+.admin-section-title {
+  color: #00ff46;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Share Tech Mono', monospace;
+  margin-bottom: 4px;
+}
+.admin-section-subtitle {
+  color: #00ff4688;
+  font-size: 13px;
+  font-family: 'Share Tech Mono', monospace;
+  margin-bottom: 16px;
+}
+.admin-divider {
+  border: none;
+  border-top: 1px solid #00ff4622;
+  margin-bottom: 24px;
+}
+
+.admin-btn-primary {
+  background: #00ff46;
+  color: #050a05;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+.admin-btn-primary:hover { filter: brightness(1.1); }
+.admin-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.admin-btn-secondary {
+  background: transparent;
+  color: #00ff4699;
+  border: 1px solid #00ff4633;
+  border-radius: 3px;
+  padding: 8px 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.admin-btn-secondary:hover { color: #00ff46; border-color: #00ff46; }
+
+.admin-btn-danger {
+  background: transparent;
+  color: #ff5f5788;
+  border: 1px solid #ff5f5733;
+  border-radius: 3px;
+  padding: 6px 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.admin-btn-danger:hover { color: #ff5f57; border-color: #ff5f57; }
+
+/* Toggle */
+.admin-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.admin-toggle-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #00ff4644;
+  background: #00ff4620;
+  position: relative;
+  transition: background 0.2s;
+}
+.admin-toggle-track.on {
+  background: #00ff4633;
+  border-color: #00ff4666;
+}
+.admin-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00ff4666;
+  transition: transform 0.2s, background 0.2s;
+}
+.admin-toggle-track.on .admin-toggle-thumb {
+  transform: translateX(16px);
+  background: #00ff46;
+}
+
+/* Card */
+.admin-card {
+  background: #0a120a;
+  border: 1px solid #00ff4622;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: border-color 0.15s;
+}
+.admin-card:hover { border-color: #00ff4644; }

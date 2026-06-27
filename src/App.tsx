@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Taskbar from './components/Taskbar'
 import Desktop from './components/Desktop'
@@ -8,8 +9,12 @@ import SystemAlert from './components/SystemAlert'
 import BootSequence from './components/BootSequence'
 import MatrixRain from './components/MatrixRain'
 import { useWindowManager } from './hooks/useWindowManager'
+import { AdminAuthProvider } from './contexts/AdminAuthContext'
+import ProtectedRoute from './components/admin/ProtectedRoute'
+import AdminLogin from './pages/admin/AdminLogin'
+import AdminDashboard from './pages/admin/AdminDashboard'
 
-export default function App() {
+function PortfolioOS() {
   const [booted, setBooted] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [output, setOutput] = useState('')
@@ -31,7 +36,6 @@ export default function App() {
 
   return (
     <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', fontFamily: "'Share Tech Mono', monospace" }}>
-      {/* CRT overlays */}
       <div className="crt-scanlines" />
       <div className="crt-flicker" />
 
@@ -41,7 +45,6 @@ export default function App() {
 
       <Taskbar onOpenAbout={() => openWindow('about')} />
 
-      {/* Main area wrapper for alert positioning */}
       <div style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <AnimatePresence>
           {showAlert && booted && (
@@ -72,7 +75,6 @@ export default function App() {
         />
       </div>
 
-      {/* Mobile fallback */}
       <div className="mobile-notice">
         <div>📺 UdayOS is best viewed on a desktop browser.</div>
         <div style={{ fontSize: 12, marginTop: 8, color: '#00ff4699' }}>
@@ -80,5 +82,23 @@ export default function App() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AdminAuthProvider>
+        <Routes>
+          <Route path="/" element={<PortfolioOS />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard/*" element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          } />
+        </Routes>
+      </AdminAuthProvider>
+    </BrowserRouter>
   )
 }
